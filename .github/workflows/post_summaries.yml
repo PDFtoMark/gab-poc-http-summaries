@@ -1,0 +1,15 @@
+name: Comment on the pull request
+permissions:
+  contents: read
+on:
+  workflow_run:
+    workflows:
+      - Health
+      - Publish
+    types:
+      - completed
+jobs:
+  upload:
+    uses: dart-lang/ecosystem/.github/workflows/post_summaries.yaml@27c2fc841818cce349e1f424af51cca9ea381f47
+    permissions:
+      pull-requests: write
